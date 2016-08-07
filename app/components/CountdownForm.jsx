@@ -8,9 +8,11 @@ var CountdownForm = React.createClass({
     // check via regex if strSeconds contains only numbers
     if (strSeconds.match(/^[0-9]*$/)) {
       //TODO: time should be equal or less to 3600 seconds!
-      
-      this.refs.seconds.value = '';
-      this.props.onSetCountdown(parseInt(strSeconds, 10));
+      var intSeconds = parseInt(strSeconds, 10);
+      if (intSeconds <= 3600) {
+        this.refs.seconds.value = '';
+        this.props.onSetCountdown(intSeconds);
+      }
     }
   },
   render: function() {
