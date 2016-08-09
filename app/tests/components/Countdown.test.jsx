@@ -41,6 +41,28 @@ describe('Countdown', () => {
       }, 3001);
     });
 
+    it('should pause countdown on paused status', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown />);
+      countdown.handleSetCountdown(3);
+      countdown.handleStatusChange('paused');
+      // it should be still 3 because it was paused.
+      setTimeout(() => {
+        expect(countdown.state.count).toBe(3);
+        done();
+      }, 1001);
+    });
+
+    it('should reset count on stopped', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown />);
+      countdown.handleSetCountdown(3);
+      countdown.handleStatusChange('stopped');
+      // it should be still 3 because it was paused.
+      setTimeout(() => {
+        expect(countdown.state.count).toBe(0);
+        done();
+      }, 1001);
+    });
+
   });
 
 });
