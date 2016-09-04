@@ -5,6 +5,8 @@ var CountdownForm = React.createClass({
     event.preventDefault();
     var strSeconds = this.refs.seconds.value;
 
+    console.log('imput count', $('input').length);
+
     // check via regex if strSeconds contains only numbers
     if (strSeconds.match(/^[0-9]*$/)) {
       //TODO: time should be equal or less to 3600 seconds!
